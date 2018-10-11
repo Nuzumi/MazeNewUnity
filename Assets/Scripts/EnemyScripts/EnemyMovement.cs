@@ -4,15 +4,17 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour {
+public class EnemyMovement : MonoBehaviour{
 
-    public int playerFollowersCount;
-    public float speed;
-    public int lostCounterMax;
+    [SerializeField]
+    private UnitStatistic unitStatistic;
 
+    private int playerFollowersCount;
+    private int lostCounterMax;
+    private float speed;
     private GameObject player;
     private List<GameObject> playerFollowers;
-    public bool follow; // zmienic potem na privvate
+    private bool follow; 
     private Vector2 forceTaApply; 
     private Rigidbody2D rb;
     private Node[] playerNodes;
@@ -22,6 +24,9 @@ public class EnemyMovement : MonoBehaviour {
 
     private void Start()
     {
+        playerFollowersCount = unitStatistic.playerFollowersCount;
+        lostCounterMax = unitStatistic.lostCounterMax;
+        speed = unitStatistic.speedModifier;
         playerNodes = new Node[8];
         objectTilePosition = GetComponent<ObjectTilePosition>();
         playerFollowers = new List<GameObject>();
