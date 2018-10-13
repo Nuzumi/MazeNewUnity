@@ -10,28 +10,30 @@ public class Damagable : MonoBehaviour {
     private UnitStatistic unitStatistic;
     [SerializeField]
     private Animator animator;
-
+    [SerializeField]
+    private IntEvent addPoints;
+    
     private int maxHealth;
-    private float actualHealth;
+    public float ActualHealth { get; set; }
 
     private void Start()
     {
         maxHealth = unitStatistic.maxHpPoints;
-        actualHealth = maxHealth;
+        ActualHealth = maxHealth;
         if (hpBarController != null)
-            hpBarController.MaxHealthPoint = maxHealth;
+            hpBarController.MaxHealthPoint = unitStatistic.maxHpPoints;
     }
 
     public void DealDamage(float damage)
     {
-        actualHealth -= damage;
+        ActualHealth -= damage;
         if (hpBarController != null)
-            hpBarController.ActualHealthPoint = actualHealth;
+            hpBarController.ActualHealthPoint = ActualHealth;
 
         if (animator != null)
             animator.SetTrigger("GetHurt");
 
-        if (actualHealth <= 0)
+        if (ActualHealth <= 0)
         {
             Die();
         }
@@ -39,13 +41,8 @@ public class Damagable : MonoBehaviour {
 
     private void Die()
     {
+        if (addPoints != null)
+            addPoints.Invoke(unitStatistic.maxHpPoints);
         gameObject.SetActive(false);
-    }
-
-    private void Update()
-    {
-        if (gameObject.CompareTag("Player"))
-            if (Input.GetKeyDown(KeyCode.A))
-                DealDamage(1);
     }
 }

@@ -11,4 +11,5 @@ public class UnitStatistic : ScriptableObject {
     public int lostCounterMax;
     public int playerFollowersCount;
     public float minTimeBetweenAttacks;
+
 }

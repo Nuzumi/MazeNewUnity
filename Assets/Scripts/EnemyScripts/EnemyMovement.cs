@@ -9,9 +9,6 @@ public class EnemyMovement : MonoBehaviour{
     [SerializeField]
     private UnitStatistic unitStatistic;
 
-    private int playerFollowersCount;
-    private int lostCounterMax;
-    private float speed;
     private GameObject player;
     private List<GameObject> playerFollowers;
     private bool follow; 
@@ -24,14 +21,12 @@ public class EnemyMovement : MonoBehaviour{
 
     private void Start()
     {
-        playerFollowersCount = unitStatistic.playerFollowersCount;
-        lostCounterMax = unitStatistic.lostCounterMax;
-        speed = unitStatistic.speedModifier;
         playerNodes = new Node[8];
         objectTilePosition = GetComponent<ObjectTilePosition>();
         playerFollowers = new List<GameObject>();
         rb = GetComponent<Rigidbody2D>();
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!follow && collision.gameObject.tag == "Player")
@@ -40,7 +35,7 @@ public class EnemyMovement : MonoBehaviour{
             GameObject tmp = player;
             playerFollowers.Add(player);
             player.GetComponent<ObjectTilePosition>().AddObjectToNotify(this,0);
-            for(int i =0;i<playerFollowersCount; i++)
+            for(int i =0;i<unitStatistic.playerFollowersCount; i++)
             {
                 GameObject folower = tmp.GetComponent<Folower>().follower;
                 playerFollowers.Add(folower);
@@ -49,6 +44,11 @@ public class EnemyMovement : MonoBehaviour{
             }
 
             follow = true;
+
+            if (transform.parent.name.Contains("Group"))
+            {
+                transform.parent.SendMessage("SetEnemiesTrigger", collision);
+            }
         }
     }
 
@@ -58,7 +58,7 @@ public class EnemyMovement : MonoBehaviour{
         if (follow)
         {
             int followerToFollow = -1;
-            for(int i = 0; i < playerFollowersCount+1; i++)
+            for(int i = 0; i < unitStatistic.playerFollowersCount+1; i++)
             {
                 if (objectTilePosition.CheckIfPathIsClear(playerNodes[i]))
                 {
@@ -73,13 +73,13 @@ public class EnemyMovement : MonoBehaviour{
                 diff.Normalize();
                 float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
-                forceTaApply = Helper.getVersor(transform.position, playerFollowers[followerToFollow].transform.position) * speed;
+                forceTaApply = Helper.getVersor(transform.position, playerFollowers[followerToFollow].transform.position) * unitStatistic.speedModifier;
             }
             else
             {
 
                 Tuple<float, int> toFollow = new Tuple<float, int>(Mathf.Infinity, 8);
-                for (int i = 0; i < playerFollowersCount+1; i++)
+                for (int i = 0; i < unitStatistic.playerFollowersCount+1; i++)
                 {
                     float value = Mathf.Sqrt(Helper.distance(transform.position,playerFollowers[i].transform.position));
                     if (value <= toFollow.Item1)
@@ -93,7 +93,7 @@ public class EnemyMovement : MonoBehaviour{
                 if(index == lastIndex)
                 {
                     lostCounter++;
-                    if(lostCounter >= lostCounterMax)
+                    if(lostCounter >= unitStatistic.lostCounterMax)
                     {
                         follow = false;
                         lostCounter = 0;
@@ -114,7 +114,7 @@ public class EnemyMovement : MonoBehaviour{
                     diff.Normalize();
                     float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
                     transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
-                    forceTaApply = Helper.getVersor(transform.position, playerFollowers[index].transform.position) * speed;
+                    forceTaApply = Helper.getVersor(transform.position, playerFollowers[index].transform.position) * unitStatistic.speedModifier;
                 }   
 
             }
@@ -134,5 +134,9 @@ public class EnemyMovement : MonoBehaviour{
         playerNodes[number] = node;
     }
 
+    public void SimulateOnTriggerEnter(Collider2D collision)
+    {
+        OnTriggerEnter2D(collision);
+    }
 
 }

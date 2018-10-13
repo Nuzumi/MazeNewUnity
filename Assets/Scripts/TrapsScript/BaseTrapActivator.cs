@@ -53,7 +53,7 @@ public class BaseTrapActivator : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (triggerActivation && collision.CompareTag("Enemy"))
+        if (triggerActivation && collision.CompareTag("Enemy") && !collision.isTrigger)
         {
             if (activateTrapTimerAfterTriggerEnter)
             {
@@ -61,7 +61,7 @@ public class BaseTrapActivator : MonoBehaviour {
             }
             else
             {
-                trapToActivate.ActivateTrap(false);
+                trapToActivate.ActivateTrap(true);
             }
         }
             

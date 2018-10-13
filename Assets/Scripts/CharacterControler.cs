@@ -8,7 +8,19 @@ public class CharacterControler : MonoBehaviour {
     public int playerFolowers;
     public GameObject player;
     public GameObject chest;
-    
+    [SerializeField]
+    private GameObjectListEvent mazeCreated;
+
+    private void OnEnable()
+    {
+        mazeCreated.AddListener(SetChcaractersStartPoints);
+    }
+
+    private void OnDisable()
+    {
+        mazeCreated.RemoveListener(SetChcaractersStartPoints);
+    }
+
 
     private void Start()
     {

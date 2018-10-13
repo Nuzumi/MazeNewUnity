@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BaseTrap : MonoBehaviour {
 
-    public List<BaseTrapComponent> trapComponents;
+    [SerializeField]
+    private List<BaseTrapComponent> trapComponents;
 
     protected List<GameObject> enemiesInTrapRange;
 
@@ -15,14 +16,13 @@ public class BaseTrap : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy") && !enemiesInTrapRange.Contains(collision.gameObject))
+        if (!enemiesInTrapRange.Contains(collision.gameObject) && !collision.isTrigger)
             enemiesInTrapRange.Add(collision.gameObject);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
-            enemiesInTrapRange.Remove(collision.gameObject);
+        enemiesInTrapRange.Remove(collision.gameObject);
     }
 
     public void ActivateTrap(bool destroyAfter)

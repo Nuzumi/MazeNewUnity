@@ -13,6 +13,5 @@ public class DamageTrapComponent : BaseTrapComponent
         Damagable damagable = enemy.GetComponent<Damagable>();
         if (damagable != null)
             damagable.DealDamage(damage);
-        Debug.Log("boom");
     }
 }

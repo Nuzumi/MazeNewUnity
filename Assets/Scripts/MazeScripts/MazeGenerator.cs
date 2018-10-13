@@ -7,10 +7,11 @@ public class MazeGenerator : MonoBehaviour {
 
     public bool Hiden;
     public string Seed;
-    public GameObject characterControler;
+    [SerializeField]
+    private GameObjectListEvent mazeCreated;
 
-    private GameObject startNode;
     private List<GameObject> nodesList;
+    private GameObject startNode;
     private List<Tuple<GameObject, GameObject>> edgesList;
     private List<GameObject> frontierNode;
     private List<GameObject> visitedNodes;
@@ -46,7 +47,8 @@ public class MazeGenerator : MonoBehaviour {
         nodesList = new List<GameObject>(GameObject.FindGameObjectsWithTag("tile"));
         MakeMaze();
         RenderMaze();
-        characterControler.GetComponent<CharacterControler>().SetChcaractersStartPoints(nodesList);
+        mazeCreated.Invoke(nodesList);
+        //characterControler.GetComponent<CharacterControler>().SetChcaractersStartPoints(nodesList);
     }
 
     private void MakeMaze()//prime

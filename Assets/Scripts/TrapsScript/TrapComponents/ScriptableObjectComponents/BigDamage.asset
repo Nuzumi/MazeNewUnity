@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2471c8b9e8c27dc4ebef52d5251d4e56, type: 3}
   m_Name: BigDamage
   m_EditorClassIdentifier: 
-  damage: 4
+  damage: 5

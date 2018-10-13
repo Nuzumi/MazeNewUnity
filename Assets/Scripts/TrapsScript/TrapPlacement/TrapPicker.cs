@@ -31,7 +31,7 @@ public class TrapPicker : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private void Update()
     {
-        if (isPointerDown)
+        if (isPointerDown && trapsIcons.Count > 4)
         {
             for (int i = 0; i < Input.touchCount; i++)
             {

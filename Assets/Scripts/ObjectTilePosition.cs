@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class ObjectTilePosition : MonoBehaviour {
 
-
-    public Node currentTile;
+    [SerializeField]
+    private Node currentTile;
     public bool active;
     public Folower folowerScript;
 

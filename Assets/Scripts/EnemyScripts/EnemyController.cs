@@ -6,43 +6,68 @@ using System.Linq;
 
 public class EnemyController : MonoBehaviour {
 
-    /*
-    public List<EnemyTypes> enemyTypes;
-    public List<GameObject> enemyPrefabs;
-    public enum EnemyTypes {pentagon };
-
-    public List<GameObject> DisabledEnemyList { get; set; }
+    [SerializeField]
+    private List<GameObject> enemiesList;
+    [SerializeField]
+    private List<int> enemiesOccurance;
+    [SerializeField]
+    private int enemiesCount;
+    [SerializeField]
+    private GameObjectListEvent mazeCreated;
+    
+    private int enemiesOccuranceSum;
+    private System.Random rand;
 
     private void Start()
     {
-        EnableList();
+        rand = new System.Random();
+        enemiesOccuranceSum = enemiesOccurance.Sum();
     }
 
-    private void EnableList()
+    private void OnEnable()
     {
-        DisabledEnemyList = new List<GameObject>();
-        var tmp = Enum.GetValues(typeof(EnemyTypes));
-        foreach (var a in tmp)
+        mazeCreated.AddListener(SetEnemiesPositions);
+    }
+
+    private void OnDisable()
+    {
+        mazeCreated.RemoveListener(SetEnemiesPositions);
+    }
+
+    private void SetEnemiesPositions(List<GameObject> nodes)
+    {
+        List<GameObject> nodesList = new List<GameObject>(nodes);
+        List<Node> nodesWhereEnemiesCanBePlaced = nodesList.Select(go => go.GetComponent<Node>()).Where(n => n.neighboursToGo.Count >= 2).ToList();
+        for(int i = 0; i < enemiesCount; i++)
         {
-            DisabledEnemyList.Add(new Tuple<int, List<GameObject>>((int)a, new List<GameObject>()));
+            int randomValue = rand.Next(enemiesOccuranceSum);
+            int sum = 0;
+            for(int j = 0; j< enemiesList.Count; j++)
+            {
+                sum += enemiesOccurance[j];
+                if(randomValue < sum)
+                {
+                    var choosenNode = nodesWhereEnemiesCanBePlaced[rand.Next(nodesWhereEnemiesCanBePlaced.Count)];
+                    SetEnemiePosition(enemiesList[j], choosenNode);
+                    nodesWhereEnemiesCanBePlaced.Remove(choosenNode);
+                    break;
+                }
+            }
         }
     }
 
-    public GameObject SpownEnemy(EnemyTypes type,Vector2 position)
+    private void SetEnemiePosition(GameObject enemy, Node node)
     {
-        var enemyList = D
-            isabledEnemyList.Where(a => a.Item1 == (int)type).FirstOrDefault().Item2;
-        if(enemyList.Count != 0)
+        var enemyInstance = Instantiate(enemy, transform);
+        enemyInstance.transform.position = node.transform.position;
+        ObjectTilePosition objectTilePosition = enemyInstance.GetComponent<ObjectTilePosition>();
+        if(objectTilePosition != null)
         {
-            GameObject enemy = enemyList.Take(1).FirstOrDefault();
-            enemy.transform.position = position;
-            enemy.SetActive(true);
-            return enemy;
+            objectTilePosition.SetTile(node);
         }
         else
         {
-            return Instantiate(enemyPrefabs[(int)type], position, Quaternion.identity);
+            enemyInstance.GetComponent<EnemiesGroup>().SetEnemiesTile(node);
         }
     }
-    */
 }
