@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 114718450201151022}
   - component: {fileID: 114353352842323202}
   - component: {fileID: 114852414948635912}
+  - component: {fileID: 114670085666081090}
   m_Layer: 2
   m_Name: TriangleEnemy (2)
   m_TagString: Enemy
@@ -83,6 +84,7 @@ GameObject:
   - component: {fileID: 114809521388835192}
   - component: {fileID: 114422406555596414}
   - component: {fileID: 114313051066768630}
+  - component: {fileID: 114520909293228622}
   m_Layer: 2
   m_Name: TriangleEnemy (1)
   m_TagString: Enemy
@@ -172,6 +174,7 @@ GameObject:
   - component: {fileID: 114262541361761388}
   - component: {fileID: 114446988541197728}
   - component: {fileID: 114143564080250826}
+  - component: {fileID: 114141189308254012}
   m_Layer: 2
   m_Name: TriangleEnemy
   m_TagString: Enemy
@@ -594,6 +597,21 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   active: 1
   folowerScript: {fileID: 0}
+--- !u!114 &114141189308254012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1846593976521914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6bbd5ed699161341bca0186f8ff9290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitStatistic: {fileID: 11400000, guid: 029dba4c8d19f654591dd7396ef39ae8, type: 2}
+  timerResponse: {fileID: 11400000, guid: 1f48aa85b2c7c624f844d0890faaff18, type: 2}
+  addTimer: {fileID: 11400000, guid: af3a9167c7b3c63459b4caccf3341862, type: 2}
+  removeTimer: {fileID: 11400000, guid: 7b87ff3ebee16e94f8b785014d3ba95b, type: 2}
 --- !u!114 &114143564080250826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -605,7 +623,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc38c06b1ed0abe4da7781676754cee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitStatistic: {fileID: 11400000, guid: 029dba4c8d19f654591dd7396ef39ae8, type: 2}
 --- !u!114 &114262541361761388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -617,7 +634,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e78864463cc6514d813d64d03d65be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitStatistic: {fileID: 11400000, guid: b9d6e3bef599a73418e4401299f3a9d6, type: 2}
 --- !u!114 &114313051066768630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -629,7 +645,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc38c06b1ed0abe4da7781676754cee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitStatistic: {fileID: 11400000, guid: 029dba4c8d19f654591dd7396ef39ae8, type: 2}
 --- !u!114 &114353352842323202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -642,7 +657,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBarController: {fileID: 0}
-  unitStatistic: {fileID: 11400000, guid: 029dba4c8d19f654591dd7396ef39ae8, type: 2}
   animator: {fileID: 95766750995052232}
   addPoints: {fileID: 11400000, guid: a7ec091eaf64a514eba15c88053ce732, type: 2}
 --- !u!114 &114422406555596414
@@ -657,7 +671,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBarController: {fileID: 0}
-  unitStatistic: {fileID: 11400000, guid: 029dba4c8d19f654591dd7396ef39ae8, type: 2}
   animator: {fileID: 95538793837784066}
   addPoints: {fileID: 11400000, guid: a7ec091eaf64a514eba15c88053ce732, type: 2}
 --- !u!114 &114446988541197728
@@ -672,9 +685,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBarController: {fileID: 0}
-  unitStatistic: {fileID: 11400000, guid: 029dba4c8d19f654591dd7396ef39ae8, type: 2}
   animator: {fileID: 95333435645853934}
   addPoints: {fileID: 11400000, guid: a7ec091eaf64a514eba15c88053ce732, type: 2}
+--- !u!114 &114520909293228622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1501759777931908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6bbd5ed699161341bca0186f8ff9290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitStatistic: {fileID: 11400000, guid: 029dba4c8d19f654591dd7396ef39ae8, type: 2}
+  timerResponse: {fileID: 11400000, guid: 1f48aa85b2c7c624f844d0890faaff18, type: 2}
+  addTimer: {fileID: 11400000, guid: af3a9167c7b3c63459b4caccf3341862, type: 2}
+  removeTimer: {fileID: 11400000, guid: 7b87ff3ebee16e94f8b785014d3ba95b, type: 2}
+--- !u!114 &114670085666081090
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1215554285675872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6bbd5ed699161341bca0186f8ff9290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitStatistic: {fileID: 11400000, guid: 029dba4c8d19f654591dd7396ef39ae8, type: 2}
+  timerResponse: {fileID: 11400000, guid: 1f48aa85b2c7c624f844d0890faaff18, type: 2}
+  addTimer: {fileID: 11400000, guid: af3a9167c7b3c63459b4caccf3341862, type: 2}
+  removeTimer: {fileID: 11400000, guid: 7b87ff3ebee16e94f8b785014d3ba95b, type: 2}
 --- !u!114 &114718450201151022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -686,7 +728,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e78864463cc6514d813d64d03d65be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitStatistic: {fileID: 11400000, guid: b9d6e3bef599a73418e4401299f3a9d6, type: 2}
 --- !u!114 &114726572612867542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -712,7 +753,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e78864463cc6514d813d64d03d65be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitStatistic: {fileID: 11400000, guid: b9d6e3bef599a73418e4401299f3a9d6, type: 2}
 --- !u!114 &114852414948635912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -724,7 +764,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc38c06b1ed0abe4da7781676754cee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitStatistic: {fileID: 11400000, guid: 029dba4c8d19f654591dd7396ef39ae8, type: 2}
 --- !u!114 &114914900601321176
 MonoBehaviour:
   m_ObjectHideFlags: 1

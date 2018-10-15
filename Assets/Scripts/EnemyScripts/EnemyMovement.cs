@@ -6,9 +6,6 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour{
 
-    [SerializeField]
-    private UnitStatistic unitStatistic;
-
     private GameObject player;
     private List<GameObject> playerFollowers;
     private bool follow; 
@@ -18,9 +15,11 @@ public class EnemyMovement : MonoBehaviour{
     private ObjectTilePosition objectTilePosition;
     private int lastIndex;
     private int lostCounter;
+    private ActualUnitStatistic actualUnitStatistic;
 
     private void Start()
     {
+        actualUnitStatistic = GetComponent<ActualUnitStatistic>();
         playerNodes = new Node[8];
         objectTilePosition = GetComponent<ObjectTilePosition>();
         playerFollowers = new List<GameObject>();
@@ -35,7 +34,7 @@ public class EnemyMovement : MonoBehaviour{
             GameObject tmp = player;
             playerFollowers.Add(player);
             player.GetComponent<ObjectTilePosition>().AddObjectToNotify(this,0);
-            for(int i =0;i<unitStatistic.playerFollowersCount; i++)
+            for(int i =0;i<actualUnitStatistic.PlayerFollowerCount; i++)
             {
                 GameObject folower = tmp.GetComponent<Folower>().follower;
                 playerFollowers.Add(folower);
@@ -58,7 +57,7 @@ public class EnemyMovement : MonoBehaviour{
         if (follow)
         {
             int followerToFollow = -1;
-            for(int i = 0; i < unitStatistic.playerFollowersCount+1; i++)
+            for(int i = 0; i < actualUnitStatistic.PlayerFollowerCount + 1; i++)
             {
                 if (objectTilePosition.CheckIfPathIsClear(playerNodes[i]))
                 {
@@ -73,13 +72,13 @@ public class EnemyMovement : MonoBehaviour{
                 diff.Normalize();
                 float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
-                forceTaApply = Helper.getVersor(transform.position, playerFollowers[followerToFollow].transform.position) * unitStatistic.speedModifier;
+                forceTaApply = Helper.getVersor(transform.position, playerFollowers[followerToFollow].transform.position) * actualUnitStatistic.SpeedModifier;
             }
             else
             {
 
                 Tuple<float, int> toFollow = new Tuple<float, int>(Mathf.Infinity, 8);
-                for (int i = 0; i < unitStatistic.playerFollowersCount+1; i++)
+                for (int i = 0; i < actualUnitStatistic.PlayerFollowerCount+1; i++)
                 {
                     float value = Mathf.Sqrt(Helper.distance(transform.position,playerFollowers[i].transform.position));
                     if (value <= toFollow.Item1)
@@ -93,7 +92,7 @@ public class EnemyMovement : MonoBehaviour{
                 if(index == lastIndex)
                 {
                     lostCounter++;
-                    if(lostCounter >= unitStatistic.lostCounterMax)
+                    if(lostCounter >= actualUnitStatistic.LostCounterMax)
                     {
                         follow = false;
                         lostCounter = 0;
@@ -114,7 +113,7 @@ public class EnemyMovement : MonoBehaviour{
                     diff.Normalize();
                     float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
                     transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
-                    forceTaApply = Helper.getVersor(transform.position, playerFollowers[index].transform.position) * unitStatistic.speedModifier;
+                    forceTaApply = Helper.getVersor(transform.position, playerFollowers[index].transform.position) * actualUnitStatistic.SpeedModifier;
                 }   
 
             }

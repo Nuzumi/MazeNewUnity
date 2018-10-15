@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 114741958219469094}
   - component: {fileID: 114284143341437360}
   - component: {fileID: 114294170853830012}
+  - component: {fileID: 114114643263861470}
   m_Layer: 2
   m_Name: TriangleEnemy
   m_TagString: Enemy
@@ -190,6 +191,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114114643263861470
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1262676602816948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6bbd5ed699161341bca0186f8ff9290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitStatistic: {fileID: 11400000, guid: 029dba4c8d19f654591dd7396ef39ae8, type: 2}
+  timerResponse: {fileID: 11400000, guid: 1f48aa85b2c7c624f844d0890faaff18, type: 2}
+  addTimer: {fileID: 11400000, guid: af3a9167c7b3c63459b4caccf3341862, type: 2}
+  removeTimer: {fileID: 11400000, guid: 7b87ff3ebee16e94f8b785014d3ba95b, type: 2}
 --- !u!114 &114284143341437360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,7 +218,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBarController: {fileID: 0}
-  unitStatistic: {fileID: 11400000, guid: 029dba4c8d19f654591dd7396ef39ae8, type: 2}
   animator: {fileID: 95096087708453406}
   addPoints: {fileID: 11400000, guid: a7ec091eaf64a514eba15c88053ce732, type: 2}
 --- !u!114 &114294170853830012
@@ -216,7 +231,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc38c06b1ed0abe4da7781676754cee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitStatistic: {fileID: 11400000, guid: 029dba4c8d19f654591dd7396ef39ae8, type: 2}
 --- !u!114 &114700417226396870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -242,7 +256,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e78864463cc6514d813d64d03d65be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitStatistic: {fileID: 11400000, guid: 029dba4c8d19f654591dd7396ef39ae8, type: 2}
 --- !u!212 &212116702046523428
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -17,13 +17,16 @@ public class TrapProgressLine : MonoBehaviour {
 
     private void Start()
     {
+        int playerPoints = SaveLoadDataController.LoadedData.playerPoints;
+
         for(int i = 0; i < trapsList.Count; i++)
         {
             var trapPart = Instantiate(trapPartOfList, panel.transform);
             trapPart.GetComponent<TrapPartOfList>().SetTrapParts(trapsList[i]);
             if(i != trapsList.Count - 1)
             {
-                Instantiate(arrowPartOfList, panel.transform);
+                var arrow = Instantiate(arrowPartOfList, panel.transform);
+                arrow.GetComponent<ArrowPartOfList>().SetCostText(playerPoints + "/" + trapsList[i].cost);
             }
         }
 

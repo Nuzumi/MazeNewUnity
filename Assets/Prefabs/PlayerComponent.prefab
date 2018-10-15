@@ -200,6 +200,8 @@ GameObject:
   - component: {fileID: 114120942129513210}
   - component: {fileID: 114140809469403906}
   - component: {fileID: 114988870324797164}
+  - component: {fileID: 114851004337696516}
+  - component: {fileID: 114970800043039530}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -216,6 +218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4214298070207586}
   - component: {fileID: 212646559970948960}
+  - component: {fileID: 95527308814927394}
   m_Layer: 0
   m_Name: GetingDamageIndicator
   m_TagString: Untagged
@@ -450,6 +453,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 19, y: 12.4}
   m_EdgeRadius: 0
+--- !u!95 &95527308814927394
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1954955645981806}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 50b594aaa00b6354ea0a37a62c2bf68e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114023263415233858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -532,7 +553,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBarController: {fileID: 114988870324797164}
-  unitStatistic: {fileID: 11400000, guid: 74dca8073876d584b8077adb5a348ffe, type: 2}
+  animator: {fileID: 95527308814927394}
+  addPoints: {fileID: 0}
 --- !u!114 &114181781282899280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -668,6 +690,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   follower: {fileID: 0}
   timeWait: 0
+--- !u!114 &114851004337696516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1950084792757182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99b1112469baf3a4f9b2a4cf76e95ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  addPoints: {fileID: 11400000, guid: a7ec091eaf64a514eba15c88053ce732, type: 2}
+  coinText: {fileID: 0}
 --- !u!114 &114885832489436522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -706,6 +741,21 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   active: 0
   folowerScript: {fileID: 0}
+--- !u!114 &114970800043039530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1950084792757182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6bbd5ed699161341bca0186f8ff9290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitStatistic: {fileID: 11400000, guid: 74dca8073876d584b8077adb5a348ffe, type: 2}
+  timerResponse: {fileID: 11400000, guid: 1f48aa85b2c7c624f844d0890faaff18, type: 2}
+  addTimer: {fileID: 11400000, guid: af3a9167c7b3c63459b4caccf3341862, type: 2}
+  removeTimer: {fileID: 11400000, guid: 7b87ff3ebee16e94f8b785014d3ba95b, type: 2}
 --- !u!114 &114988870324797164
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 114116891732174564}
   - component: {fileID: 114194834817584334}
   - component: {fileID: 114855494648753614}
+  - component: {fileID: 114496837200875774}
   m_Layer: 2
   m_Name: PentagonEnemy
   m_TagString: Enemy
@@ -231,7 +232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e78864463cc6514d813d64d03d65be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitStatistic: {fileID: 11400000, guid: b9d6e3bef599a73418e4401299f3a9d6, type: 2}
 --- !u!114 &114194834817584334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -244,9 +244,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBarController: {fileID: 0}
-  unitStatistic: {fileID: 11400000, guid: b9d6e3bef599a73418e4401299f3a9d6, type: 2}
   animator: {fileID: 95705921831873950}
   addPoints: {fileID: 11400000, guid: a7ec091eaf64a514eba15c88053ce732, type: 2}
+--- !u!114 &114496837200875774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1198531509252940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6bbd5ed699161341bca0186f8ff9290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitStatistic: {fileID: 11400000, guid: b9d6e3bef599a73418e4401299f3a9d6, type: 2}
+  timerResponse: {fileID: 11400000, guid: 1f48aa85b2c7c624f844d0890faaff18, type: 2}
+  addTimer: {fileID: 11400000, guid: af3a9167c7b3c63459b4caccf3341862, type: 2}
+  removeTimer: {fileID: 11400000, guid: 7b87ff3ebee16e94f8b785014d3ba95b, type: 2}
 --- !u!114 &114617651027038870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -272,7 +286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc38c06b1ed0abe4da7781676754cee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitStatistic: {fileID: 11400000, guid: b9d6e3bef599a73418e4401299f3a9d6, type: 2}
 --- !u!212 &212407242995055262
 SpriteRenderer:
   m_ObjectHideFlags: 1

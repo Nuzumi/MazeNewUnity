@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class EnemyDamageDealer : MonoBehaviour {
 
-    [SerializeField]
-    private UnitStatistic unitStatistic;
-
     private float lastTimeHit;
+    private ActualUnitStatistic actualUnitStatistic;
+
+    private void Start()
+    {
+        actualUnitStatistic = GetComponent<ActualUnitStatistic>();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -23,12 +26,12 @@ public class EnemyDamageDealer : MonoBehaviour {
 
     private void DealDamage(GameObject toDealDamage)
     {
-        if (Time.timeSinceLevelLoad > lastTimeHit + unitStatistic.minTimeBetweenAttacks)
+        if (Time.timeSinceLevelLoad > lastTimeHit + actualUnitStatistic.MinTimeBetweenAttacks)
         {
             Damagable damagable = toDealDamage.GetComponent<Damagable>();
             if (damagable != null)
             {
-                damagable.DealDamage(unitStatistic.damage);
+                damagable.DealDamage(actualUnitStatistic.Damage);
                 lastTimeHit = Time.timeSinceLevelLoad;
             }
         }
