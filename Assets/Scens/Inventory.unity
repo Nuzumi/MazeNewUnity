@@ -421,7 +421,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 250}
+  m_SizeDelta: {x: 310, y: 250}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1591150761
 MonoBehaviour:
@@ -490,12 +490,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d60b729edd75e8419763e4b09ead374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trapsList: []
+  trapsList:
+  - {fileID: 11400000, guid: 0108b1fbf4e69f14aa47b21f34bbc172, type: 2}
+  - {fileID: 11400000, guid: 0108b1fbf4e69f14aa47b21f34bbc172, type: 2}
+  - {fileID: 11400000, guid: 0108b1fbf4e69f14aa47b21f34bbc172, type: 2}
+  - {fileID: 11400000, guid: 0108b1fbf4e69f14aa47b21f34bbc172, type: 2}
+  - {fileID: 11400000, guid: 0108b1fbf4e69f14aa47b21f34bbc172, type: 2}
+  - {fileID: 11400000, guid: 0108b1fbf4e69f14aa47b21f34bbc172, type: 2}
   trapPartOfList: {fileID: 1266776835887614, guid: 88f34b9844001ac4fbd5e260c8df73ef,
     type: 2}
   arrowPartOfList: {fileID: 1991205137203256, guid: 79058bb9991006f4ba47410c7e82f3ce,
     type: 2}
   panel: {fileID: 1591150759}
+  oneSegmentWidth: 335
 --- !u!1 &1600805150
 GameObject:
   m_ObjectHideFlags: 0

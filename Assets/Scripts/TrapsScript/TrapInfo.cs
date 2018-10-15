@@ -6,6 +6,7 @@ using UnityEngine;
 public class TrapInfo : ScriptableObject {
 
     public string trapName;
+    [Multiline]
     public string trapDescription;
     public Sprite trapIconSprite;
     public int cost;

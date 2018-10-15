@@ -13,7 +13,7 @@ public class TrapProgressLine : MonoBehaviour {
     [SerializeField]
     private GameObject panel;
     [SerializeField]
-
+    private int oneSegmentWidth;
 
     private void Start()
     {
@@ -21,8 +21,16 @@ public class TrapProgressLine : MonoBehaviour {
         {
             var trapPart = Instantiate(trapPartOfList, panel.transform);
             trapPart.GetComponent<TrapPartOfList>().SetTrapParts(trapsList[i]);
-            Instantiate(arrowPartOfList, panel.transform);
+            if(i != trapsList.Count - 1)
+            {
+                Instantiate(arrowPartOfList, panel.transform);
+            }
         }
+
+        var rect = panel.GetComponent<RectTransform>();
+        rect.sizeDelta = new Vector2(oneSegmentWidth * trapsList.Count, rect.sizeDelta.y);
+
+        
     }
 
 }

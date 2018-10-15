@@ -9,11 +9,14 @@ public class TrapPartOfList : MonoBehaviour {
     private Image trapImage;
     [SerializeField]
     private Text trapCostText;
+    [SerializeField]
+    private Text trapName;
 
     public void SetTrapParts(TrapInfo trapInfo)
     {
         trapImage.sprite = trapInfo.trapIconSprite;
         trapCostText.text = trapInfo.cost.ToString();
+        trapName.text = trapInfo.trapName;
     }
 
 }
