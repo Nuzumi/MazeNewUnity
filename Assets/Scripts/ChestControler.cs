@@ -5,15 +5,18 @@ using UnityEngine.Experimental.UIElements;
 
 public class ChestControler : MonoBehaviour {
 
-    public GameObject winInage;
-    public GameObject player;
+    [SerializeField]
+    private NativeEvent levelPassed;
+    [SerializeField]
+    private GameObject player;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player" && Helper.distance(transform.position,collision.transform.position) < 1.3f )
         {
-            winInage.SetActive(true);
+            levelPassed.Invoke();
             player.GetComponent<PlayerControler>().CanMove = false;
+            SaveLoadDataController.LoadedData.playerLevel++;
         }
     }
 }

@@ -10,6 +10,8 @@ public class Damagable : MonoBehaviour {
     private Animator animator;
     [SerializeField]
     private IntEvent addPoints;
+    [SerializeField]
+    private NativeEvent playerDied;
 
     private ActualUnitStatistic actualUnitStatistic;
     private bool dead;
@@ -44,6 +46,13 @@ public class Damagable : MonoBehaviour {
     {
         if (addPoints != null)
             addPoints.Invoke(actualUnitStatistic.MaxHP);
+        if (playerDied != null)
+        {
+            playerDied.Invoke();
+            SaveLoadDataController.ClearData();
+        }
+            
+
         dead = true;
         gameObject.SetActive(false);
     }

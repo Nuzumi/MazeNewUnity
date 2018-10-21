@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ce762c61503c1e40a2074e9733cb600, type: 3}
+  m_Name: LandMineTimeInfo
+  m_EditorClassIdentifier: 
+  trapName: TimeBomb
+  trapDescription: 
+  trapIconSprite: {fileID: 21300000, guid: 08899c7b95056de458c07a171209ec23, type: 3}
+  cost: 20
+  trapIconObject: {fileID: 1639200574660660, guid: 6f492c44769977346bd48bf0cee8f648,
+    type: 2}

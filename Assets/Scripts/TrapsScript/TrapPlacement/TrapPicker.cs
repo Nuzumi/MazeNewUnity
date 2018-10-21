@@ -1,17 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class TrapPicker : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    [SerializeField]
-    public List<GameObject> trapsIcons;
+    
     [SerializeField]
     public int offset;
     [SerializeField]
     public int rotationSpeedModifier;
 
+    private List<GameObject> trapsIcons;
     private bool isPointerDown;
     private List<GameObject> menuItemList = new List<GameObject>();
     private Vector3 circleCenterPosition;
@@ -20,6 +21,7 @@ public class TrapPicker : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private void Start()
     {
+        trapsIcons = TrapInfoController.activeTrapsInfo.Select(ti => ti.trapIconObject).ToList();
         var rectTransform = GetComponent<RectTransform>();
         circleCenterPosition = new Vector3(Screen.width, 0);
         circelLeftUpperCorner = circleCenterPosition - new Vector3(rectTransform.rect.width, -rectTransform.rect.height);
@@ -143,4 +145,5 @@ public class TrapPicker : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         isPointerDown = false;
     }
+
 }

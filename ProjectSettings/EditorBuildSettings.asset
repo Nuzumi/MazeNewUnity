@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scens/Level1.unity
-    guid: 644fd5167585a0e4aa46a0ff0df0d5ce
+    path: Assets/Scens/DDOLScene.unity
+    guid: db545cd5454808849b1a4091eebabdec
   - enabled: 1
     path: Assets/Scens/Menu.unity
     guid: b24bfb98a187b4f4682828e012adfdd4
+  - enabled: 1
+    path: Assets/Scens/Inventory.unity
+    guid: 7319fb0019c5f3f45a4ce19738120d0b
+  - enabled: 1
+    path: Assets/Scens/TutorialMap.unity
+    guid: 403e4d6abcece4c4eaf7a547e83639d3
+  - enabled: 1
+    path: Assets/Scens/Map1.unity
+    guid: 644fd5167585a0e4aa46a0ff0df0d5ce
   m_configObjects: {}

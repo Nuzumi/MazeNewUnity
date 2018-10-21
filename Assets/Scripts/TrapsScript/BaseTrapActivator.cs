@@ -5,21 +5,16 @@ using UnityEngine;
 public enum TrapActivationStatus {DontDestroyAfter, DestroyAfter};
 
 public class BaseTrapActivator : MonoBehaviour {
-
-    [SerializeField]
-    private int timesToActivateTrap;
+    
+    public int timesToActivateTrap;
     [SerializeField]
     private IntGameObjectEvent timerResponse;
     [SerializeField]
     private FloatIntGameObjectEvent addTimer;
-    [SerializeField]
-    private float timeActivation = -1;
-    [SerializeField]
-    private bool triggerActivation;
-    [SerializeField]
-    private bool activateTrapComponentsAfterFirstTimer;
-    [SerializeField]
-    private bool activateTrapTimerAfterTriggerEnter;
+    public float timeActivation = -1;
+    public bool triggerActivation;
+    public bool activateTrapComponentsAfterFirstTimer;
+    public bool activateTrapTimerAfterTriggerEnter;
     [SerializeField]
     private BaseTrap trapToActivate;
 

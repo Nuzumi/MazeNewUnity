@@ -8,4 +8,5 @@ public class SaveLoadData  {
 
     public int playerPoints;
     public string playerName;
+    public int playerLevel;
 }

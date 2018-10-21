@@ -68,4 +68,9 @@ public static class SaveLoadDataController  {
     {
         SaveData(LoadedData);
     }
+
+    public static void ClearData()
+    {
+        LoadedData = new SaveLoadData();
+    }
 }

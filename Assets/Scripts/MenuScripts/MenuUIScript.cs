@@ -6,18 +6,40 @@ using UnityEngine.UI;
 
 public class MenuUIScript : MonoBehaviour {
 
+    [SerializeField]
+    private int playerLevelPerMap;
     public GameObject startNextLevelButton;
-
-    
 
     private void Start()
     {
-        startNextLevelButton.GetComponent<Text>().text = "start 1 level";
+        int playerLevel = SaveLoadDataController.LoadedData.playerLevel + 1;
+        string levelName;
+        if (playerLevel == 0)
+            levelName = "Tutorial";
+        else
+            levelName = playerLevel + " level";
+
+        startNextLevelButton.GetComponent<Text>().text = "start " + levelName;
     }
 
     public void OnStartNextLevelClick()
     {
-        SceneManager.LoadScene("Level1");
+        int playerLevel = SaveLoadDataController.LoadedData.playerLevel + 1;
+
+        if (playerLevel == 0)
+        {
+            SceneManager.LoadScene("TutorialMap");
+        }
+        else
+        {
+            int playerNextMap = (playerLevel / playerLevelPerMap) + 1;
+            SceneManager.LoadScene("Map" + playerNextMap);
+        }
+    }
+
+    public void GoToInventory()
+    {
+        SceneManager.LoadScene("Inventory");
     }
 
 }

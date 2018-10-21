@@ -18,3 +18,5 @@ MonoBehaviour:
 '
   trapIconSprite: {fileID: 21300000, guid: 41c6f94d80f9e034a9c63dcf97d30f5c, type: 3}
   cost: 0
+  trapIconObject: {fileID: 1639200574660660, guid: 277d3eaa970be1b4fbde6ec55b0165a3,
+    type: 2}

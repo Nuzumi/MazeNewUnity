@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class BaseTrap : MonoBehaviour {
 
+    public List<BaseTrapComponent> trapComponents;
     [SerializeField]
-    private List<BaseTrapComponent> trapComponents;
+    private float animationTime;
 
-    protected List<GameObject> enemiesInTrapRange;
+    private List<GameObject> enemiesInTrapRange;
+    private bool canActivateAnimation = true;
+    private bool canTrapBeActivated = true;
 
     private void Start()
     {
@@ -27,12 +30,25 @@ public class BaseTrap : MonoBehaviour {
 
     public void ActivateTrap(bool destroyAfter)
     {
-        foreach (var tc in trapComponents)
-            tc.ActivateTrapComponent(enemiesInTrapRange);
+        if (canTrapBeActivated)
+        {
+            foreach (var tc in trapComponents)
+                tc.ActivateTrapComponent(enemiesInTrapRange);
 
-        Debug.Log("actiavtated " + gameObject.name);
-        if(destroyAfter)
-            Destroy(gameObject);
+            if (canActivateAnimation)
+            {
+                GetComponent<Animator>().SetTrigger("Activate");
+                canActivateAnimation = false;
+            }
+
+            Debug.Log("actiavtated " + gameObject.name);
+            if (destroyAfter)
+            {
+                Destroy(gameObject, animationTime);
+                canTrapBeActivated = false;
+            }
+        }
+            
     }
 
 }

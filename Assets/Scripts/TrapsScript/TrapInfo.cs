@@ -10,4 +10,5 @@ public class TrapInfo : ScriptableObject {
     public string trapDescription;
     public Sprite trapIconSprite;
     public int cost;
+    public GameObject trapIconObject;
 }

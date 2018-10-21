@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SlowmoController : MonoBehaviour {
 
+    [SerializeField]
     private FloatEvent changeTimeScale;
 
     private void OnEnable()

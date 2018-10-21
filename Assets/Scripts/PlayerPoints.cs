@@ -11,6 +11,14 @@ public class PlayerPoints : MonoBehaviour {
     private Text coinText;
 
     private int points;
+    private SaveLoadData loadedData;
+
+    private void Start()
+    {
+        loadedData = SaveLoadDataController.LoadedData;
+        points = loadedData.playerPoints;
+        coinText.text = points.ToString();
+    }
 
     private void OnEnable()
     {
@@ -26,5 +34,6 @@ public class PlayerPoints : MonoBehaviour {
     {
         this.points += points;
         coinText.text = this.points.ToString();
+        loadedData.playerPoints += points;
     }
 }
