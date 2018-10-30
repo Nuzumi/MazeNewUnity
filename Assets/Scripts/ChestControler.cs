@@ -17,6 +17,7 @@ public class ChestControler : MonoBehaviour {
             levelPassed.Invoke();
             player.GetComponent<PlayerControler>().CanMove = false;
             SaveLoadDataController.LoadedData.playerLevel++;
+            SaveLoadDataController.SaveData();
         }
     }
 }

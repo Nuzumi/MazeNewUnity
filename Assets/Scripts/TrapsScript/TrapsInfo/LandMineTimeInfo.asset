@@ -14,6 +14,6 @@ MonoBehaviour:
   trapName: TimeBomb
   trapDescription: 
   trapIconSprite: {fileID: 21300000, guid: 08899c7b95056de458c07a171209ec23, type: 3}
-  cost: 20
+  cost: 60
   trapIconObject: {fileID: 1639200574660660, guid: 6f492c44769977346bd48bf0cee8f648,
     type: 2}

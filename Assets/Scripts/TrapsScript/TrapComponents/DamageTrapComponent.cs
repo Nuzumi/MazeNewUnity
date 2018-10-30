@@ -9,6 +9,6 @@ public class DamageTrapComponent : BaseTrapComponent
     {
         Damagable damagable = enemy.GetComponent<Damagable>();
         if (damagable != null)
-            damagable.DealDamage(effectValue);
+            damagable.DealDamage(effectValue[0]);
     }
 }

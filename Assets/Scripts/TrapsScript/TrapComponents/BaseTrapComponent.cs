@@ -6,7 +6,7 @@ public abstract class BaseTrapComponent : ScriptableObject {
 
     public Sprite componentImage;
     public string componentNamage;
-    public float effectValue;
+    public List<float> effectValue;
 
     public void ActivateTrapComponent(List<GameObject> enemies)
     {

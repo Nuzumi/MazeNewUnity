@@ -7,6 +7,7 @@ using System.IO;
 
 public static class SaveLoadDataController  {
 
+    public static StringEvent debugEvent;
     public static string fileName = "playerData.pd";
 
     private static SaveLoadData loadedData;
@@ -30,14 +31,23 @@ public static class SaveLoadDataController  {
     private static bool SaveData(SaveLoadData saveLoadData)
     {
         BinaryFormatter binaryFormatter = new BinaryFormatter();
-        FileStream file = File.Create(Path.Combine(Application.persistentDataPath, fileName));
-        binaryFormatter.Serialize(file, saveLoadData ?? new SaveLoadData());
-        file.Close();
+        try
+        {
+            FileStream file = File.Create(Path.Combine(Application.persistentDataPath, fileName));
+            binaryFormatter.Serialize(file, saveLoadData ?? new SaveLoadData());
+            file.Close();
+        }
+        catch (Exception ex)
+        {
+            debugEvent.Invoke(ex.Message);
+            Debug.Log(ex.Message);
+        }
         return true;
     }
 
     private static SaveLoadData LoadData()
     {
+
         if(File.Exists(Path.Combine(Application.persistentDataPath,fileName)))
         {
             BinaryFormatter binaryFormatter = new BinaryFormatter();
@@ -51,12 +61,14 @@ public static class SaveLoadDataController  {
             catch(Exception ex)
             {
                 Debug.Log(ex.Message);
+                debugEvent.Invoke(ex.Message);
             }
-
+            
             return data;
         }
         else
         {
+            Debug.Log("noFileToLoad");
             SaveData(loadedData);
             return LoadData();
         }

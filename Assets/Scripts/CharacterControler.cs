@@ -31,11 +31,7 @@ public class CharacterControler : MonoBehaviour {
     public void SetChcaractersStartPoints(List<GameObject> gameObjectsList)
     {
         System.Random rand = new System.Random();
-        List<Node> nodeList = new List<Node>();
-        foreach(GameObject g in gameObjectsList)
-        {
-            nodeList.Add(g.GetComponent<Node>());
-        }
+        List<Node> nodeList = gameObjectsList.Select(n => n.GetComponent<Node>()).ToList();
 
         List<Node> potencialStartNode = nodeList.Where(n => n.neighboursToGo.Count == 1).ToList();
         List<Tuple<Node, float>> distanceList = new List<Tuple<Node, float>>();

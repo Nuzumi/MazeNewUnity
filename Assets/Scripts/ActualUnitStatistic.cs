@@ -29,6 +29,16 @@ public class ActualUnitStatistic : MonoBehaviour {
     private int oldPlayerFollowerCount;
     private float oldMinTimeBetweenAttacks;
 
+    private void OnEnable()
+    {
+        timerResponse.AddListener(SetPropertyBack);
+    }
+
+    private void OnDisable()
+    {
+        timerResponse.RemoveListener(SetPropertyBack);
+    }
+
     private void Start()
     {
         MaxHP = unitStatistic.maxHpPoints;
@@ -97,5 +107,36 @@ public class ActualUnitStatistic : MonoBehaviour {
         addTimer.Invoke(time, (int)statistic, gameObject);
     }
 
+    private void SetPropertyBack(int statistic, GameObject sendGameObject)
+    {
+        if(sendGameObject == gameObject)
+        {
+            switch ((Statistic)statistic)
+            {
+                case Statistic.Damage:
+                    Damage = oldDamage;
+                    break;
 
+                case Statistic.LostounterMax:
+                    LostCounterMax = oldLostCounterMax;
+                    break;
+
+                case Statistic.MaxHp:
+                    MaxHP = oldMaxHP;
+                    break;
+
+                case Statistic.MinTimeBetweenAttacks:
+                    MinTimeBetweenAttacks = oldMinTimeBetweenAttacks;
+                    break;
+
+                case Statistic.PlayerFollowerCount:
+                    PlayerFollowerCount = oldPlayerFollowerCount;
+                    break;
+
+                case Statistic.SpeedModifier:
+                    SpeedModifier = oldSpeedModifier;
+                    break;
+            }
+        }
+    }
 }

@@ -12,7 +12,7 @@ public class MenuUIScript : MonoBehaviour {
 
     private void Start()
     {
-        int playerLevel = SaveLoadDataController.LoadedData.playerLevel + 1;
+        int playerLevel = SaveLoadDataController.LoadedData.playerLevel;
         string levelName;
         if (playerLevel == 0)
             levelName = "Tutorial";
@@ -24,7 +24,7 @@ public class MenuUIScript : MonoBehaviour {
 
     public void OnStartNextLevelClick()
     {
-        int playerLevel = SaveLoadDataController.LoadedData.playerLevel + 1;
+        int playerLevel = SaveLoadDataController.LoadedData.playerLevel;
 
         if (playerLevel == 0)
         {

@@ -7,6 +7,8 @@ public class HPBarController : MonoBehaviour {
 
     [SerializeField]
     private Image hpBar;
+    [SerializeField]
+    private Text hpNumber;
 
     private int maxHealthPoint;
     public int MaxHealthPoint
@@ -23,6 +25,7 @@ public class HPBarController : MonoBehaviour {
         set
         {
             hpBar.fillAmount = value / MaxHealthPoint;
+            hpNumber.text = value + "/" + MaxHealthPoint;
         }
     }
 

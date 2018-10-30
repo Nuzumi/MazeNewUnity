@@ -15,9 +15,21 @@ EditorBuildSettings:
     path: Assets/Scens/Inventory.unity
     guid: 7319fb0019c5f3f45a4ce19738120d0b
   - enabled: 1
+    path: Assets/Scens/Map2.unity
+    guid: 644fd5167585a0e4aa46a0ff0df0d5ce
+  - enabled: 1
     path: Assets/Scens/TutorialMap.unity
-    guid: 403e4d6abcece4c4eaf7a547e83639d3
+    guid: bde9ae3a14ea1d84b989a37b4e6d8f86
   - enabled: 1
     path: Assets/Scens/Map1.unity
-    guid: 644fd5167585a0e4aa46a0ff0df0d5ce
+    guid: 64082039b245d554fa7936ba48dfc69e
+  - enabled: 1
+    path: Assets/Scens/Map3.unity
+    guid: 041283c67a150d842933c9008dadab9c
+  - enabled: 1
+    path: Assets/Scens/Map4.unity
+    guid: addf9297be16f9a4cbed29cffcd8be77
+  - enabled: 1
+    path: Assets/Scens/Map5.unity
+    guid: 31bd2cc11fff1cb4183453305b0a1b6a
   m_configObjects: {}

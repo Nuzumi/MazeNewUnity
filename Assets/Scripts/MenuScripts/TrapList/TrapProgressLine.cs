@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class TrapProgressLine : MonoBehaviour {
     
@@ -17,7 +18,7 @@ public class TrapProgressLine : MonoBehaviour {
 
     private void Start()
     {
-        trapsList = TrapInfoController.trapsInfo;
+        trapsList = TrapInfoController.trapsInfo.OrderBy(ti => ti.cost).ToList();
         int playerPoints = SaveLoadDataController.LoadedData.playerPoints;
 
         for(int i = 0; i < trapsList.Count; i++)

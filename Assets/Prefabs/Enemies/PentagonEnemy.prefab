@@ -246,6 +246,7 @@ MonoBehaviour:
   hpBarController: {fileID: 0}
   animator: {fileID: 95705921831873950}
   addPoints: {fileID: 11400000, guid: a7ec091eaf64a514eba15c88053ce732, type: 2}
+  playerDied: {fileID: 0}
 --- !u!114 &114496837200875774
 MonoBehaviour:
   m_ObjectHideFlags: 1

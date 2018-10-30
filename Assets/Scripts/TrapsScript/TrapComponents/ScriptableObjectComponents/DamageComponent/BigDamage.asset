@@ -9,8 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2471c8b9e8c27dc4ebef52d5251d4e56, type: 3}
-  m_Name: LittleDamage
+  m_Name: BigDamage
   m_EditorClassIdentifier: 
   componentImage: {fileID: 21300000, guid: a4eeb9c26c3c16e469eb5b1039512d80, type: 3}
   componentNamage: Damage
-  effectValue: 1.5
+  effectValue:
+  - 5
