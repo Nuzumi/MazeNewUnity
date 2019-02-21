@@ -124,4 +124,9 @@ public class ObjectTilePosition : MonoBehaviour {
             }
         }
     }
+
+    public Node GetActiveTile()
+    {
+        return currentTile;
+    }
 }

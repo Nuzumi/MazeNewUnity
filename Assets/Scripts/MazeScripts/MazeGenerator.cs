@@ -8,11 +8,12 @@ public class MazeGenerator : MonoBehaviour {
     public bool Hiden;
     public string Seed;
     [SerializeField]
+    private int circlesPercent;//percent of tiles to modify to get circles in maze
+    [SerializeField]
     private GameObjectListEvent mazeCreated;
 
     private List<GameObject> nodesList;
     private GameObject startNode;
-    private List<Tuple<GameObject, GameObject>> edgesList;
     private List<GameObject> frontierNode;
     private List<GameObject> visitedNodes;
     private System.Random rand;
@@ -29,9 +30,7 @@ public class MazeGenerator : MonoBehaviour {
         }
        
         frontierNode = new List<GameObject>();
-        edgesList = new List<Tuple<GameObject, GameObject>>();
         visitedNodes = new List<GameObject>();
-
         StartCoroutine("InitializeWithDelay");
         
     }
@@ -40,15 +39,16 @@ public class MazeGenerator : MonoBehaviour {
     {
         yield return new WaitForFixedUpdate();
         Initialize();
+        Debug.Log(nodesList.Count);
     }
 
     public void Initialize()
     {
         nodesList = new List<GameObject>(GameObject.FindGameObjectsWithTag("tile"));
         MakeMaze();
+        CreateCirclesInMaze();
         RenderMaze();
         mazeCreated.Invoke(nodesList);
-        //characterControler.GetComponent<CharacterControler>().SetChcaractersStartPoints(nodesList);
     }
 
     private void MakeMaze()//prime
@@ -80,14 +80,29 @@ public class MazeGenerator : MonoBehaviour {
         }
     }
 
-    private GameObject RemoveRandomNode(List<GameObject> list)
+    private void CreateCirclesInMaze()
     {
-        GameObject value = list[rand.Next(list.Count)];
+        int tilesToModify = nodesList.Count * circlesPercent / 100;
+        Debug.Log(tilesToModify + " tiles to modify");
+        List<Node> candidatesToModify = nodesList.Select(n => n.GetComponent<Node>()).Where(n => n.neighboursToGo.Count <= 2).ToList();
+
+        for(int i = 0; i < tilesToModify; i++)
+        {
+            Node circleNode = RemoveRandomNode(candidatesToModify);
+            GameObject secoundNode = TakeRandomNode(circleNode.neighbours);
+            AddNodeToWallList(circleNode.gameObject, secoundNode);
+            candidatesToModify = candidatesToModify.Where(n => n.neighboursToGo.Count == 1).ToList();
+        }
+    }
+
+    private T RemoveRandomNode<T>(List<T> list)
+    {
+        T value = list[rand.Next(list.Count)];
         list.Remove(value);
         return value;
     }
 
-    private GameObject TakeRandomNode(List<GameObject> list)
+    private T TakeRandomNode<T>(List<T> list)
     {
         return list[rand.Next(list.Count - 1)];
     }
@@ -104,34 +119,38 @@ public class MazeGenerator : MonoBehaviour {
         }
 
         GameObject secoundNode = tmp[rand.Next(tmp.Count)];
-        edgesList.Add(new Tuple<GameObject, GameObject>(node,secoundNode));
 
-        node.GetComponent<Node>().neighboursToGo.Add(secoundNode);
-        secoundNode.GetComponent<Node>().neighboursToGo.Add(node);
+        AddNodeToWallList(node, secoundNode);
+    }
 
-        if (node.transform.position.x > secoundNode.transform.position.x)
+    private void AddNodeToWallList(GameObject node1, GameObject node2)
+    {
+        node1.GetComponent<Node>().neighboursToGo.Add(node2);
+        node2.GetComponent<Node>().neighboursToGo.Add(node1);
+
+        if (node1.transform.position.x > node2.transform.position.x)
         {
-            node.GetComponent<Node>().wals[(int)Node.WalsDirection.left] = true;
-            secoundNode.GetComponent<Node>().wals[(int)Node.WalsDirection.right] = true;
+            node1.GetComponent<Node>().wals[(int)Node.WalsDirection.left] = true;
+            node2.GetComponent<Node>().wals[(int)Node.WalsDirection.right] = true;
         }
         else
         {
-            if (node.transform.position.x < secoundNode.transform.position.x)
+            if (node1.transform.position.x < node2.transform.position.x)
             {
-                node.GetComponent<Node>().wals[(int)Node.WalsDirection.right] = true;
-                secoundNode.GetComponent<Node>().wals[(int)Node.WalsDirection.left] = true;
+                node1.GetComponent<Node>().wals[(int)Node.WalsDirection.right] = true;
+                node2.GetComponent<Node>().wals[(int)Node.WalsDirection.left] = true;
             }
             else
             {
-                if (node.transform.position.y > secoundNode.transform.position.y)
+                if (node1.transform.position.y > node2.transform.position.y)
                 {
-                    node.GetComponent<Node>().wals[(int)Node.WalsDirection.down] = true;
-                    secoundNode.GetComponent<Node>().wals[(int)Node.WalsDirection.top] = true;
+                    node1.GetComponent<Node>().wals[(int)Node.WalsDirection.down] = true;
+                    node2.GetComponent<Node>().wals[(int)Node.WalsDirection.top] = true;
                 }
                 else
                 {
-                    node.GetComponent<Node>().wals[(int)Node.WalsDirection.top] = true;
-                    secoundNode.GetComponent<Node>().wals[(int)Node.WalsDirection.down] = true;
+                    node1.GetComponent<Node>().wals[(int)Node.WalsDirection.top] = true;
+                    node2.GetComponent<Node>().wals[(int)Node.WalsDirection.down] = true;
                 }
             }
         }

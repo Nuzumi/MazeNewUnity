@@ -15,10 +15,12 @@ public class LevelSummary : MonoBehaviour {
     private IntEvent onEnemiesKilld;
     [SerializeField]
     private NativeEvent onLevelPassed;
+    [SerializeField]
+    private GameObject EndGamePanel;
 
     private float timeSinceLevelStarted;
     private int newStarsCount;
-    private int enemiesKilledCount;
+    private int enemiesKilledCount= -1;
 
     private void OnEnable()
     {
@@ -37,7 +39,10 @@ public class LevelSummary : MonoBehaviour {
         timeSinceLevelStarted = Time.timeSinceLevelLoad;
         enemiesKilled.text = enemiesKilledCount.ToString();
         starCollected.text = "+ " + newStarsCount;
-        levelTime.text = timeSinceLevelStarted.ToString();
+        int levelSecounds = ((int)timeSinceLevelStarted);
+        levelTime.text = (levelSecounds / 60).ToString() + " : " + (levelSecounds % 60 > 9 ? (levelSecounds % 60).ToString() : "0" + levelSecounds % 60) + " min";
+        if (SaveLoadDataController.LoadedData.playerLevel == 16)
+            EndGamePanel.SetActive(true);
     }
 
     private void OnEnemieKilld(int enemyMaxHP)

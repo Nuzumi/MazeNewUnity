@@ -16,6 +16,7 @@ public class EnemyMovement : MonoBehaviour{
     private int lastIndex;
     private int lostCounter;
     private ActualUnitStatistic actualUnitStatistic;
+    private int lostCounterMaxMultiplier = 3;
 
     private void Start()
     {
@@ -72,52 +73,33 @@ public class EnemyMovement : MonoBehaviour{
                 diff.Normalize();
                 float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
-                forceTaApply = Helper.getVersor(transform.position, playerFollowers[followerToFollow].transform.position) * actualUnitStatistic.SpeedModifier;
+                forceTaApply = diff * actualUnitStatistic.SpeedModifier;
+                lostCounter = 0;
             }
             else
             {
 
-                Tuple<float, int> toFollow = new Tuple<float, int>(Mathf.Infinity, 8);
-                for (int i = 0; i < actualUnitStatistic.PlayerFollowerCount+1; i++)
+                lostCounter++;
+                if(lostCounter == actualUnitStatistic.LostCounterMax * lostCounterMaxMultiplier)
                 {
-                    float value = Mathf.Sqrt(Helper.distance(transform.position,playerFollowers[i].transform.position));
-                    if (value <= toFollow.Item1)
-                    {
-                        toFollow.Item1 = value;
-                        toFollow.Item2 = i;
-                    }
+                    StopFollowing();
                 }
-
-                int index = toFollow.Item2 == 0 ? 0 : toFollow.Item2 - 1;
-                if(index == lastIndex)
-                {
-                    lostCounter++;
-                    if(lostCounter >= actualUnitStatistic.LostCounterMax)
-                    {
-                        follow = false;
-                        lostCounter = 0;
-                        forceTaApply = Vector2.zero;
-                        rb.velocity = Vector2.zero;
-                        foreach(GameObject o in playerFollowers)
-                        {
-                            o.GetComponent<ObjectTilePosition>().RemoveObjectToNitify(this);
-                        }
-                        playerFollowers.Clear();
-                    }
-                }
-                else
-                {
-                    lostCounter = 0;
-                    lastIndex = index;
-                    Vector3 diff = playerFollowers[index].transform.position - transform.position;
-                    diff.Normalize();
-                    float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-                    transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
-                    forceTaApply = Helper.getVersor(transform.position, playerFollowers[index].transform.position) * actualUnitStatistic.SpeedModifier;
-                }   
-
             }
         }
+    }
+
+    private void StopFollowing()
+    {
+        follow = false;
+        lostCounter = 0;
+        forceTaApply = Vector2.zero;
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0.4f;
+        foreach (GameObject o in playerFollowers)
+        {
+            o.GetComponent<ObjectTilePosition>().RemoveObjectToNitify(this);
+        }
+        playerFollowers.Clear();
     }
 
     private void FixedUpdate()

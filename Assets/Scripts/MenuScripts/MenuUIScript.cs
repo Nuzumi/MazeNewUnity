@@ -7,19 +7,50 @@ using UnityEngine.UI;
 public class MenuUIScript : MonoBehaviour {
 
     [SerializeField]
+    private Text name;
+    [SerializeField]
+    private Text points;
+    [SerializeField]
+    private Text level;
+    [SerializeField]
     private int playerLevelPerMap;
+    [SerializeField]
+    private GameObject endGamePanel;
+
     public GameObject startNextLevelButton;
 
     private void Start()
     {
-        int playerLevel = SaveLoadDataController.LoadedData.playerLevel;
+        SaveLoadData loadData = SaveLoadDataController.LoadedData;
+        int playerLevel = loadData.playerLevel;
         string levelName;
-        if (playerLevel == 0)
-            levelName = "Tutorial";
-        else
-            levelName = playerLevel + " level";
 
-        startNextLevelButton.GetComponent<Text>().text = "start " + levelName;
+        if(playerLevel == 16)
+        {
+            endGamePanel.SetActive(true);
+        }
+        else
+        {
+            if (playerLevel == 0)
+                levelName = "Tutorial";
+            else
+                levelName = playerLevel + " level";
+
+            startNextLevelButton.GetComponent<Text>().text = "start " + levelName;
+            if (loadData.playerName == null)
+            {
+                name.text = "";
+                points.text = "";
+                level.text = "";
+            }
+            else
+            {
+                name.text += loadData.playerName;
+                points.text += loadData.playerPoints;
+                level.text += loadData.playerLevel;
+            }
+        }
+
     }
 
     public void OnStartNextLevelClick()
@@ -40,6 +71,12 @@ public class MenuUIScript : MonoBehaviour {
     public void GoToInventory()
     {
         SceneManager.LoadScene("Inventory");
+    }
+
+    public void ResetGame()
+    {
+        SaveLoadDataController.ClearData();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 }

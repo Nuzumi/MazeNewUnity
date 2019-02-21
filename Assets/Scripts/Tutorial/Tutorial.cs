@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour {
 
@@ -10,8 +12,7 @@ public class Tutorial : MonoBehaviour {
     private GameObject stepZeroPanel;
     [SerializeField]
     private GameObject enemyWarningPanel;
-
-    private PlayerControler playerControler;
+    
     private bool showEnemyWarning = true;
 
     private void Start()
@@ -23,7 +24,6 @@ public class Tutorial : MonoBehaviour {
     {
         yield return new WaitForEndOfFrame();
         player.SetActive(true);
-        playerControler = player.GetComponent<PlayerControler>();
         ShowStep(0);
     }
 
@@ -33,6 +33,11 @@ public class Tutorial : MonoBehaviour {
         {
             ShowStep(1);
         }
+    }
+
+    public void SetPlayerName(Text playerName)
+    {
+        SaveLoadDataController.LoadedData.playerName = playerName.text;
     }
 
     public void ShowStep(int stepNumber)
@@ -51,6 +56,12 @@ public class Tutorial : MonoBehaviour {
                 }
                 break;
         }
+    }
+
+    public void SkipTutorial()
+    {
+        SaveLoadDataController.LoadedData.playerLevel++;
+        SceneManager.LoadScene("Menu");
     }
 
 

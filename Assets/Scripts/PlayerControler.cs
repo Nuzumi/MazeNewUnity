@@ -82,4 +82,14 @@ public class PlayerControler : MonoBehaviour {
         CanMove = state;
         movementDirection = Vector3.zero;
     }
+
+    public void MakeRoll()
+    {
+        if( movementDirection != Vector2.zero && !makeingRoll)
+        {
+            makeingRoll = true;
+            rollStartTime = Time.timeSinceLevelLoad;
+            velocity *= rollVelocityMultiplier;
+        }
+    }
 }

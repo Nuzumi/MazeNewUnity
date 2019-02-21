@@ -10,8 +10,7 @@ public class EnemyController : MonoBehaviour {
     private List<GameObject> enemiesList;
     [SerializeField]
     private List<int> enemiesOccurance;
-    [SerializeField]
-    private int enemiesCount;
+    public int enemiesCount;
     [SerializeField]
     private GameObjectListEvent mazeCreated;
     

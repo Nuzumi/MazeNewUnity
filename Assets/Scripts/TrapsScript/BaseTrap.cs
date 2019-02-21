@@ -7,13 +7,17 @@ public class BaseTrap : MonoBehaviour {
     public List<BaseTrapComponent> trapComponents;
     [SerializeField]
     private float animationTime;
+    [SerializeField]
+    private AudioClip activationSound;
 
     private List<GameObject> enemiesInTrapRange;
     private bool canActivateAnimation = true;
     private bool canTrapBeActivated = true;
+    private AudioSource audioSource;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         enemiesInTrapRange = new List<GameObject>();
     }
 
@@ -32,6 +36,8 @@ public class BaseTrap : MonoBehaviour {
     {
         if (canTrapBeActivated)
         {
+            audioSource.Play();
+
             foreach (var tc in trapComponents)
                 tc.ActivateTrapComponent(enemiesInTrapRange);
 
@@ -47,6 +53,8 @@ public class BaseTrap : MonoBehaviour {
                 Destroy(gameObject, animationTime);
                 canTrapBeActivated = false;
             }
+
+
         }
             
     }

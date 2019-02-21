@@ -10,6 +10,8 @@ public class CharacterControler : MonoBehaviour {
     public GameObject chest;
     [SerializeField]
     private GameObjectListEvent mazeCreated;
+    [SerializeField]
+    private GameObjectListEvent characterPlaced;
 
     private void OnEnable()
     {
@@ -64,6 +66,7 @@ public class CharacterControler : MonoBehaviour {
 
             if (distance > 10000)
             {
+                Debug.Log("character controller overflow");
                 break;
             }
         }
@@ -75,8 +78,26 @@ public class CharacterControler : MonoBehaviour {
         SetTileForFollowers(player, playerStartNode, playerFolowers);
         player.SetActive(true);
         chest.transform.position = endNode.gameObject.transform.position;
-        chest.SetActive(true);  
-       
+        chest.SetActive(true);
+
+        DeleteUsedNodes(playerStartNode, endNode,gameObjectsList);
+    }
+
+    private void DeleteUsedNodes(Node playerNode, Node chestNode, List<GameObject> nodesList)
+    {
+        List<GameObject> result = new List<GameObject>(nodesList);
+        result.Remove(playerNode.gameObject);
+        result.Remove(chestNode.gameObject);
+
+        Node current = playerNode.neighboursToGo[0].GetComponent<Node>();
+        while(current.neighboursToGo.Count == 2)
+        {
+            current.CanGoTo = false;
+            result.Remove(current.gameObject);
+            current = current.neighboursToGo.Find(n => n.GetComponent<Node>() != current).GetComponent<Node>();
+        }
+
+        characterPlaced.Invoke(result);
     }
 
     public void SetTileForFollowers(GameObject toSet,Node node,int count)

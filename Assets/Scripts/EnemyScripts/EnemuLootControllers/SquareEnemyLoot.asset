@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd521485a466e8745b790f662a31ce7d, type: 3}
+  m_Name: SquareEnemyLoot
+  m_EditorClassIdentifier: 
+  lootList:
+  - loot: {fileID: 1542654463684802, guid: bd48f60c2de7d834a96e4e0a68108b8d, type: 2}
+    chance: 0.25

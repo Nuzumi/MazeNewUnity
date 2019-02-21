@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8518624023087188662
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8518624023087188663}
+  - component: {fileID: 8518624023087188656}
+  - component: {fileID: 8518624023087188658}
+  - component: {fileID: 8518624023087188659}
+  - component: {fileID: 8518624023087188621}
+  - component: {fileID: 8518624023087188620}
+  m_Layer: 0
+  m_Name: GameControler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8518624023087188663
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518624023087188662}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8518624023087188656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518624023087188662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e24846dab8a8c545b640d7c4ea0e04d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerFolowers: 7
+  player: {fileID: 0}
+  chest: {fileID: 0}
+  mazeCreated: {fileID: 11400000, guid: 7d37b7431152439439b71f55e398dc85, type: 2}
+  characterPlaced: {fileID: 11400000, guid: 9ffc40e3574c043498a4c89be2311d1e, type: 2}
+--- !u!114 &8518624023087188658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518624023087188662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2394afcb841b2e04a8f05af9f6447a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesList:
+  - {fileID: 1198531509252940, guid: 19f0719f1ec0aef438941bbda916ac92, type: 3}
+  - {fileID: 1262676602816948, guid: 7b7c9af20b8924a4f8f193ea444522ed, type: 3}
+  enemiesOccurance: 0500000003000000
+  enemiesCount: 6
+  mazeCreated: {fileID: 11400000, guid: 9ffc40e3574c043498a4c89be2311d1e, type: 2}
+--- !u!114 &8518624023087188659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518624023087188662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e836517ca83c1a4b933436dde8e2461, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  removeTimer: {fileID: 11400000, guid: 7b87ff3ebee16e94f8b785014d3ba95b, type: 2}
+  timerResponse: {fileID: 11400000, guid: 1f48aa85b2c7c624f844d0890faaff18, type: 2}
+  setTimer: {fileID: 11400000, guid: af3a9167c7b3c63459b4caccf3341862, type: 2}
+--- !u!114 &8518624023087188621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518624023087188662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f104c887d7efb4686cb780f7d70d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8518624023087188620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518624023087188662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1674429ed633144a9328b5f0cd5e27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  changeTimeScale: {fileID: 11400000, guid: 4ab3f248fc0a16047b654608770fd046, type: 2}

@@ -1,8 +1,7 @@
 fileFormatVersion: 2
-guid: 66ed0a09f082e824f92874370f39fe0f
+guid: 48ce99e51b460c740922a49f2e3b6ea3
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: forest-2_0
+  fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -41,12 +40,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 256
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -94,31 +93,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: forest-2_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 339
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f5b162cb6c7ee0449b44d372a14c5de8
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 25bbd16d28674a9438c2da1375eeb2f2
+    spriteID: 646bece62dbaf0e4cb863e469d1d002d
     vertices: []
     indices: 
     edges: []

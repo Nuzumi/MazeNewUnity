@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: BigSlowEffect
   m_EditorClassIdentifier: 
   componentImage: {fileID: 21300000, guid: 1d831cc6f772c4549a5249de23a03c97, type: 3}
-  componentNamage: Freez
+  componentNamage: Freeze
   effectValue:
-  - 0.7
+  - 0.85
   - 1

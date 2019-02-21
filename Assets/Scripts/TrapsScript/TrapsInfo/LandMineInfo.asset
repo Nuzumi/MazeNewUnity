@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce762c61503c1e40a2074e9733cb600, type: 3}
   m_Name: LandMineInfo
   m_EditorClassIdentifier: 
-  trapName: LandMine
+  trapName: Land Mine
   trapDescription: '
 
 

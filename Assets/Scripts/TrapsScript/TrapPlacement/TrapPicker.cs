@@ -21,7 +21,7 @@ public class TrapPicker : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private void Start()
     {
-        trapsIcons = TrapInfoController.activeTrapsInfo.Select(ti => ti.trapIconObject).ToList();
+        trapsIcons = TrapInfoController.ActiveTrapsInfo.Select(ti => ti.trapIconObject).ToList();
         var rectTransform = GetComponent<RectTransform>();
         circleCenterPosition = new Vector3(Screen.width, 0);
         circelLeftUpperCorner = circleCenterPosition - new Vector3(rectTransform.rect.width, -rectTransform.rect.height);

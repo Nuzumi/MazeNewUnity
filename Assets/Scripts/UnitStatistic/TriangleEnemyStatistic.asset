@@ -16,4 +16,4 @@ MonoBehaviour:
   speedModifier: 6.5
   lostCounterMax: 5
   playerFollowersCount: 3
-  minTimeBetweenAttacks: 0.3
+  minTimeBetweenAttacks: 0.25

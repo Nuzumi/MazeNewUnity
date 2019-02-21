@@ -24,8 +24,11 @@ public class HPBarController : MonoBehaviour {
     {
         set
         {
-            hpBar.fillAmount = value / MaxHealthPoint;
-            hpNumber.text = value + "/" + MaxHealthPoint;
+            if(hpBar != null)
+                hpBar.fillAmount = value / MaxHealthPoint;
+            
+            if(hpNumber != null)
+                hpNumber.text = value + "/" + MaxHealthPoint;
         }
     }
 
